@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#ff6b6b">
-    <title>Happy Birthday My Love 💕</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#ff6b6b">
+  <title>Happy Birthday My Love 💕</title>
+  <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
         
         * {
@@ -401,254 +401,141 @@
                 transform: scale(1);
             }
         }
-    </style>
+    
+  </style>
 </head>
 <audio id="bgMusic" loop>
   <source src="Sal.mp3" type="audio/mpeg">
 </audio>
 <body>
-    <div class="hearts" id="hearts"></div>
-    
-    <div class="container">
-        <!-- Welcome Section -->
-        <section class="section welcome-section" id="welcomeSection">
-            <div class="welcome-content">
-                <h1 class="title">💕Special Surprise💕</h1>
-                <p class="subtitle">Ada yang istimewa untukmu hari ini...</p>
-                <div class="name-input">
-                    <input type="text" class="input-field" id="nameInput" placeholder="Siapa namamu, sayang?">
-                    <button class="btn" onclick="startSurprise()">Mulai Kejutan! ✨</button>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Birthday Message Section -->
-        <section class="section message-section" id="messageSection">
-            <div class="message-content">
-                <h2 class="birthday-title">🎉Selamat Ulang Tahun!🎉</h2>
-                <p class="message-text" id="personalMessage">
-                    Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran orang yang paling berarti dalam hidupku. 
-                    <br><br>
-                    Setiap detik bersamamu adalah anugerah yang tak ternilai. Senyummu adalah sinar matahari yang menerangi hariku, 
-                    tawamu adalah melodi terindah yang pernah kudengar, dan cintamu adalah rumah yang paling nyaman bagiku.
-                    <br><br>
-                    Di hari spesialmu ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu. Kamu bukan hanya kekasih, 
-                    tapi juga sahabat terbaik, partner hidup, dan alasan aku untuk terus berkembang menjadi lebih baik.
-                </p>
-                
-                <div class="photo-gallery">
-                    <div class="photo">📸</div>
-                    <div class="photo">💕</div>
-                </div>
-                
-                <button class="btn next-btn" onclick="showSurprise()">Masih Ada Lagi! 🎁</button>
-            </div>
-        </section>
-        
-        <!-- Final Surprise Section -->
-        <section class="section surprise-section" id="surpriseSection">
-            <div class="message-content">
-                <div class="cake">🎂</div>
-                <h2 class="birthday-title" id="finalTitle">Happy Birthday My Love!</h2>
-                <p class="final-message">
-                    Semoga di tahun yang baru ini, semua impian dan harapanmu menjadi kenyataan. 
-                    Semoga kebahagiaan selalu menyertai langkahmu, dan semoga cinta kita terus tumbuh semakin kuat setiap harinya.
-                    <br><br>
-                    Aku berjanji akan selalu ada untukmu, dalam suka maupun duka, dalam tertawa maupun tangis. 
-                    Karena kamu adalah pilihan terbaik yang pernah aku buat dalam hidup ini.
-                    <br><br>
-                    <strong>🎈 Selamat Ulang Tahun, Cinta! 🎈</strong>
-                    <br>
-                    <em>With all my love, forever and always ❤️</em>
-                </p>
-            </div>
-        </section>
-    </div>
+  <div class="hearts" id="hearts"></div>
 
-    <script>
-        // Prevent iOS safari bouncing
-        document.addEventListener('touchmove', function (e) {
-            if (e.scale !== 1) { e.preventDefault(); }
-        }, { passive: false });
+  <div class="container">
+    <!-- Welcome Section -->
+    <section class="section welcome-section" id="welcomeSection">
+      <div class="welcome-content">
+        <h1 class="title">💕Special Surprise💕</h1>
+        <p class="subtitle">Ada yang istimewa untukmu hari ini...</p>
+        <div class="name-input">
+          <!-- Input nama dihilangkan, langsung tombol -->
+          <button class="btn" onclick="startSurprise()">Mulai Kejutan! ✨</button>
+        </div>
+      </div>
+    </section>
 
-        // Optimize for iOS performance
-        let touchStartY = 0;
-        document.addEventListener('touchstart', e => {
-            touchStartY = e.touches[0].clientY;
-        });
+    <!-- Birthday Message Section -->
+    <section class="section message-section" id="messageSection">
+      <div class="message-content">
+        <h2 class="birthday-title">🎉Selamat Ulang Tahun!🎉</h2>
+        <p class="message-text" id="personalMessage">
+          Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran orang yang paling berarti dalam hidupku. 
+          <br><br>
+          Setiap detik bersamamu adalah anugerah yang tak ternilai. Senyummu adalah sinar matahari yang menerangi hariku, 
+          tawamu adalah melodi terindah yang pernah kudengar, dan cintamu adalah rumah yang paling nyaman bagiku.
+          <br><br>
+          Di hari spesialmu ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu. Kamu bukan hanya kekasih, 
+          tapi juga sahabat terbaik, partner hidup, dan alasan aku untuk terus berkembang menjadi lebih baik.
+        </p>
 
-        document.addEventListener('touchmove', e => {
-            const touchY = e.touches[0].clientY;
-            const touchDiff = touchStartY - touchY;
-            
-            // Prevent overscroll bounce effect
-            if (window.pageYOffset === 0 && touchDiff < 0) {
-                e.preventDefault();
-            }
-        }, { passive: false });
+        <div class="photo-gallery">
+          <div class="photo">📸</div>
+          <div class="photo">💕</div>
+        </div>
 
-        // Create floating hearts
-        function createHearts() {
-            const heartsContainer = document.getElementById('hearts');
-            const heartSymbols = ['💖', '💕', '💗', '💓', '💝', '🌹', '✨'];
-            
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                heart.style.animationDelay = Math.random() * 2 + 's';
-                heartsContainer.appendChild(heart);
-                
-                setTimeout(() => {
-                    heart.remove();
-                }, 8000);
-            }, 300);
-        }
-        
-        function createSparkles(element) {
-            const sparkles = ['✨', '⭐', '💫', '🌟'];
-            for (let i = 0; i < 5; i++) {
-                setTimeout(() => {
-                    const sparkle = document.createElement('div');
-                    sparkle.className = 'sparkle';
-                    sparkle.innerHTML = sparkles[Math.floor(Math.random() * sparkles.length)];
-                    sparkle.style.left = Math.random() * 100 + '%';
-                    sparkle.style.top = Math.random() * 100 + '%';
-                    element.appendChild(sparkle);
-                    
-                    setTimeout(() => sparkle.remove(), 2000);
-                }, i * 200);
-            }
-        }
+        <button class="btn next-btn" onclick="showSurprise()">Masih Ada Lagi! 🎁</button>
+      </div>
+    </section>
 
-        function playMusic() {
-            const music = document.getElementById('bgMusic');
-            music.play().catch(err => {
-                console.log("Autoplay dicegah, menunggu interaksi user.", err);
-            });
-        }
+    <!-- Final Surprise Section -->
+    <section class="section surprise-section" id="surpriseSection">
+      <div class="message-content">
+        <div class="cake">🎂</div>
+        <h2 class="birthday-title" id="finalTitle">Happy Birthday My Love!</h2>
+        <p class="final-message">
+          Semoga di tahun yang baru ini, semua impian dan harapanmu menjadi kenyataan. 
+          Semoga kebahagiaan selalu menyertai langkahmu, dan semoga cinta kita terus tumbuh semakin kuat setiap harinya.
+          <br><br>
+          Aku berjanji akan selalu ada untukmu, dalam suka maupun duka, dalam tertawa maupun tangis. 
+          Karena kamu adalah pilihan terbaik yang pernah aku buat dalam hidup ini.
+          <br><br>
+          <strong>🎈 Selamat Ulang Tahun, Cinta! 🎈</strong>
+          <br>
+          <em>With all my love, forever and always ❤️</em>
+        </p>
+      </div>
+    </section>
+  </div>
 
-        function startSurprise() {
-            const name = document.getElementById('nameInput').value.trim();
-            if (!name) {
-                alert('Masukkan nama dulu dong, sayang! 💕');
-                document.getElementById('nameInput').focus();
-                return;
-            }
+  <script>
+    // Fungsi play musik
+    function playMusic() {
+      const music = document.getElementById('bgMusic');
+      music.play().catch(err => {
+        console.log("Autoplay dicegah, menunggu interaksi user.", err);
+      });
+    }
 
-            // 🔊 Putar musik saat user klik tombol
-            playMusic();
+    // Start kejutan langsung pakai nama fix
+    function startSurprise() {
+      const name = "Syafiratul Atika S.Psi";
 
-            // Haptic feedback untuk iOS
-            if (window.navigator.vibrate) {
-                window.navigator.vibrate(200);
-            }
+      // 🔊 Putar musik saat user klik tombol
+      playMusic();
 
-            // Update personal message dengan nama
-            const personalMessage = document.getElementById('personalMessage');
-            personalMessage.innerHTML = personalMessage.innerHTML.replace(
-                'orang yang paling berarti dalam hidupku',
-                name + ', orang yang paling berarti dalam hidupku'
-            );
+      // Update personal message dengan nama
+      const personalMessage = document.getElementById('personalMessage');
+      personalMessage.innerHTML = personalMessage.innerHTML.replace(
+        'orang yang paling berarti dalam hidupku',
+        name + ', orang yang paling berarti dalam hidupku'
+      );
 
-            // Update final title
-            document.getElementById('finalTitle').innerHTML = `Happy Birthday ${name}! 🎉`;
+      // Update final title
+      document.getElementById('finalTitle').innerHTML = `Happy Birthday ${name}! 🎉`;
 
-            // Transisi ke message section
-            const welcomeSection = document.getElementById('welcomeSection');
-            const messageSection = document.getElementById('messageSection');
+      // Transisi ke message section
+      const welcomeSection = document.getElementById('welcomeSection');
+      const messageSection = document.getElementById('messageSection');
 
-            welcomeSection.style.opacity = '0';
-            welcomeSection.style.transform = 'translateY(-50px)';
+      welcomeSection.style.opacity = '0';
+      welcomeSection.style.transform = 'translateY(-50px)';
 
-            setTimeout(() => {
-                welcomeSection.style.display = 'none';
-                messageSection.style.display = 'flex';
-                messageSection.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        welcomeSection.style.display = 'none';
+        messageSection.style.display = 'flex';
+        messageSection.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
 
-                // Efek sparkles
-                createSparkles(messageSection);
-            }, 300);
-        }
-        
-        function showSurprise() {
-            // Haptic feedback for iOS
-            if (window.navigator.vibrate) {
-                window.navigator.vibrate([100, 50, 100]);
-            }
-            
-            const messageSection = document.getElementById('messageSection');
-            const surpriseSection = document.getElementById('surpriseSection');
-            
-            messageSection.style.opacity = '0';
-            messageSection.style.transform = 'translateY(-50px)';
-            
-            setTimeout(() => {
-                messageSection.style.display = 'none';
-                surpriseSection.style.display = 'flex';
-                surpriseSection.scrollIntoView({ behavior: 'smooth' });
-                
-                // Create more sparkles
-                createSparkles(surpriseSection);
-                
-                // Confetti effect
-                setTimeout(() => {
-                    for (let i = 0; i < 30; i++) { // Reduced for mobile performance
-                        createConfetti();
-                    }
-                }, 500);
-            }, 300);
-        }
-        
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            const confettiSymbols = ['🎉', '🎊', '🎈', '🎁', '🌈', '⭐', '✨'];
-            confetti.innerHTML = confettiSymbols[Math.floor(Math.random() * confettiSymbols.length)];
-            confetti.style.position = 'fixed';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.top = '-10px';
-            confetti.style.fontSize = Math.random() * 20 + 15 + 'px';
-            confetti.style.zIndex = '1000';
-            confetti.style.pointerEvents = 'none';
-            confetti.style.animation = `float ${Math.random() * 3 + 2}s linear forwards`;
-            document.body.appendChild(confetti);
-            
-            setTimeout(() => confetti.remove(), 5000);
-        }
-        
-        // Initialize hearts animation
-        createHearts();
-        
-        // Add click effects to photos
-        document.querySelectorAll('.photo').forEach(photo => {
-            photo.addEventListener('click', function() {
-                this.style.transform = 'scale(1.2) rotate(10deg)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1) rotate(0deg)';
-                }, 300);
-                createSparkles(this);
-            });
-        });
-        
-        // Add music note animation on scroll
-        window.addEventListener('scroll', () => {
-            if (Math.random() < 0.1) {
-                const note = document.createElement('div');
-                note.innerHTML = '🎵';
-                note.style.position = 'fixed';
-                note.style.right = '20px';
-                note.style.top = Math.random() * window.innerHeight + 'px';
-                note.style.fontSize = '24px';
-                note.style.zIndex = '999';
-                note.style.pointerEvents = 'none';
-                note.style.animation = 'float 3s linear forwards';
-                document.body.appendChild(note);
-                
-                setTimeout(() => note.remove(), 3000);
-            }
-        });
-    </script>
+    function showSurprise() {
+      const messageSection = document.getElementById('messageSection');
+      const surpriseSection = document.getElementById('surpriseSection');
+
+      messageSection.style.opacity = '0';
+      messageSection.style.transform = 'translateY(-50px)';
+
+      setTimeout(() => {
+        messageSection.style.display = 'none';
+        surpriseSection.style.display = 'flex';
+        surpriseSection.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+
+    // Efek hati tetap aktif
+    function createHearts() {
+      const heartsContainer = document.getElementById('hearts');
+      const heartSymbols = ['💖', '💕', '💗', '💓', '💝', '🌹', '✨'];
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        heart.style.animationDelay = Math.random() * 2 + 's';
+        heartsContainer.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 8000);
+      }, 300);
+    }
+    createHearts();
+  </script>
 </body>
 </html>
