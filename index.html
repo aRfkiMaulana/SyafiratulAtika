@@ -416,6 +416,9 @@
         }
     </style>
 </head>
+<audio id="bgMusic" loop>
+  <source src="Sal.mp3" type="audio/mpeg">
+</audio>
 <body>
     <div class="hearts" id="hearts"></div>
     
@@ -542,7 +545,14 @@
                 }, i * 200);
             }
         }
-        
+
+        function playMusic() {
+            const music = document.getElementById('bgMusic');
+            music.play().catch(err => {
+                console.log("Autoplay dicegah, menunggu interaksi user.", err);
+            });
+        }
+
         function startSurprise() {
             const name = document.getElementById('nameInput').value.trim();
             if (!name) {
@@ -550,32 +560,38 @@
                 document.getElementById('nameInput').focus();
                 return;
             }
-            
-            // Haptic feedback for iOS (if supported)
+
+            // 🔊 Putar musik saat user klik tombol
+            playMusic();
+
+            // Haptic feedback untuk iOS
             if (window.navigator.vibrate) {
                 window.navigator.vibrate(200);
             }
-            
-            // Update personal message with name
+
+            // Update personal message dengan nama
             const personalMessage = document.getElementById('personalMessage');
-            personalMessage.innerHTML = personalMessage.innerHTML.replace('orang yang paling berarti dalam hidupku', name + ', orang yang paling berarti dalam hidupku');
-            
+            personalMessage.innerHTML = personalMessage.innerHTML.replace(
+                'orang yang paling berarti dalam hidupku',
+                name + ', orang yang paling berarti dalam hidupku'
+            );
+
             // Update final title
             document.getElementById('finalTitle').innerHTML = `Happy Birthday ${name}! 🎉`;
-            
-            // Smooth transition
+
+            // Transisi ke message section
             const welcomeSection = document.getElementById('welcomeSection');
             const messageSection = document.getElementById('messageSection');
-            
+
             welcomeSection.style.opacity = '0';
             welcomeSection.style.transform = 'translateY(-50px)';
-            
+
             setTimeout(() => {
                 welcomeSection.style.display = 'none';
                 messageSection.style.display = 'flex';
                 messageSection.scrollIntoView({ behavior: 'smooth' });
-                
-                // Create sparkles effect
+
+                // Efek sparkles
                 createSparkles(messageSection);
             }, 300);
         }
