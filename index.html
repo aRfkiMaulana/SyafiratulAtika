@@ -1,541 +1,217 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#ff6b6b">
-  <title>Happy Birthday My Love 💕</title>
-  <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            background: linear-gradient(-45deg, #ff6b6b, #ffa500, #ff1744, #e91e63, #9c27b0);
-            background-size: 400% 400%;
-            animation: gradientShift 10s ease infinite;
-            min-height: 100vh;
-            min-height: 100dvh; /* Dynamic viewport height for mobile */
-            touch-action: manipulation; /* Prevent zoom on double tap */
-            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .container {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.8);
-            animation: float 6s infinite ease-in-out;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        .section {
-            min-height: 100vh;
-            min-height: 100dvh; /* Better mobile viewport */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            text-align: center;
-        }
-        
-        .welcome-section {
-            position: relative;
-        }
-        
-        .welcome-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 600px;
-            transform: scale(0);
-            animation: scaleIn 1s ease-out 0.5s forwards;
-        }
-        
-        @keyframes scaleIn {
-            to {
-                transform: scale(1);
-            }
-        }
-        
-        .title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff6b6b;
-            }
-            to {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff6b6b;
-            }
-        }
-        
-        .subtitle {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-        
-        .name-input {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .input-field {
-            padding: 15px 20px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .input-field::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .input-field:focus {
-            outline: none;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .btn {
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            border: none;
-            border-radius: 15px;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
-        }
-        
-        .message-section {
-            display: none;
-        }
-        
-        .message-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .birthday-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-        
-        .message-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-        
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .photo {
-            width: 100%;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .photo:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .wishes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .wish-item {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 25px;
-            color: white;
-            font-weight: 500;
-            animation: wishFloat 3s infinite ease-in-out;
-        }
-        
-        .wish-item:nth-child(odd) {
-            animation-delay: 0.5s;
-        }
-        
-        @keyframes wishFloat {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        .next-btn {
-            margin-top: 2rem;
-        }
-        
-        .surprise-section {
-            display: none;
-        }
-        
-        .cake {
-            font-size: 8rem;
-            margin: 2rem 0;
-        }
-        
-        
-        .final-message {
-            font-size: 1.4rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.95);
-            margin: 2rem 0;
-        }
-        
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.1rem;
-                margin-bottom: 1.5rem;
-                display: flex;
-            }
-            
-            .birthday-title {
-                font-size: 1.6rem;
-                text-align: center;
-                color: pink;
-    
-            }
-            
-            .message-content, .welcome-content {
-                padding: 2rem 1.5rem;
-                margin: 0.5rem;
-                border-radius: 20px;
-            }
-            
-            .cake {
-                font-size: 6rem;
-                margin: 1.5rem 0;
-            }
-            
-            .input-field, .btn {
-                font-size: 1rem;
-                padding: 18px 20px; /* Larger touch targets for iOS */
-            }
-            
-            .message-text {
-                font-size: 1.1rem;
-                line-height: 1.7;
-            }
-            
-            .final-message {
-                font-size: 1.2rem;
-                line-height: 1.7;
-            }
-            
-            .subtitle {
-                font-size: 0.8rem;
-                margin-bottom: 2rem;
-            }
-            
-            /* iPhone 12 specific optimizations */
-            .photo-gallery {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.8rem;
-            }
-            
-            .photo {
-                height: 120px;
-                font-size: 2.5rem;
-            }
-            
-            .wishes {
-                gap: 0.8rem;
-            }
-            
-            .wish-item {
-                padding: 12px 18px;
-                font-size: 0.95rem;
-            }
-            
-            /* Prevent text selection issues on iOS */
-            .title, .birthday-title {
-                -webkit-user-select: none;
-                user-select: none;
-            }
-        }
-        
-        .sparkle {
-            position: absolute;
-            font-size: 20px;
-            color: #fff;
-            animation: sparkle 2s infinite;
-        }
-        
-        @keyframes sparkle {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ff6b6b">
+    <title>Happy Birthday My Love 💕</title>
+    <link rel="stylesheet" href="style.css ">
 </head>
 <audio id="bgMusic" loop>
   <source src="Sal.mp3" type="audio/mpeg">
 </audio>
 <body>
-  <div class="hearts" id="hearts"></div>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <!-- Welcome Section -->
+        <section class="section welcome-section" id="welcomeSection">
+            <div class="welcome-content">
+                <h1 class="title">💕Special Surprise💕</h1>
+                <p class="subtitle">Ada yang istimewa untukmu hari ini...</p>
+                <div class="name-input">
+                    <!-- Input dihapus, hanya tombol -->
+                    <button class="btn" onclick="startSurprise()">Mulai Kejutan! ✨</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Birthday Message Section -->
+        <section class="section message-section" id="messageSection">
+            <div class="message-content">
+                <h2 class="birthday-title">🎉Selamat Ulang Tahun!🎉</h2>
+                <p class="message-text" id="personalMessage">
+                    Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran Syafiratul Atika S.Psi, orang yang paling berarti dalam hidupku. 
+                    <br><br>
+                    Setiap detik bersamamu adalah anugerah yang tak ternilai. Senyummu adalah sinar matahari yang menerangi hariku, 
+                    tawamu adalah melodi terindah yang pernah kudengar, dan cintamu adalah rumah yang paling nyaman bagiku.
+                    <br><br>
+                    Di hari spesialmu ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu. Kamu bukan hanya kekasih, 
+                    tapi juga sahabat terbaik, partner hidup, dan alasan aku untuk terus berkembang menjadi lebih baik.
+                </p>
+                
+                <div class="photo-gallery">
+                    <div class="photo">📸</div>
+                    <div class="photo">💕</div>
+                </div>
+                
+                <button class="btn next-btn" onclick="showSurprise()">Masih Ada Lagi! 🎁</button>
+            </div>
+        </section>
+        
+        <!-- Final Surprise Section -->
+        <section class="section surprise-section" id="surpriseSection">
+            <div class="message-content">
+                <div class="cake">🎂</div>
+                <h2 class="birthday-title" id="finalTitle">Happy Birthday Syafiratul Atika S.Psi! 🎉</h2>
+                <p class="final-message">
+                    Semoga di tahun yang baru ini, semua impian dan harapanmu menjadi kenyataan. 
+                    Semoga kebahagiaan selalu menyertai langkahmu, dan semoga cinta kita terus tumbuh semakin kuat setiap harinya.
+                    <br><br>
+                    Aku berjanji akan selalu ada untukmu, dalam suka maupun duka, dalam tertawa maupun tangis. 
+                    Karena kamu adalah pilihan terbaik yang pernah aku buat dalam hidup ini.
+                    <br><br>
+                    <strong>🎈 Selamat Ulang Tahun, Cinta! 🎈</strong>
+                    <br>
+                    <em>With all my love, forever and always ❤️</em>
+                </p>
+            </div>
+        </section>
+    </div>
 
-  <div class="container">
-    <!-- Welcome Section -->
-    <section class="section welcome-section" id="welcomeSection">
-      <div class="welcome-content">
-        <h1 class="title">💕Special Surprise💕</h1>
-        <p class="subtitle">Ada yang istimewa untukmu hari ini...</p>
-        <div class="name-input">
-          <!-- Input nama dihilangkan, langsung tombol -->
-          <button class="btn" onclick="startSurprise()">Mulai Kejutan! ✨</button>
-        </div>
-      </div>
-    </section>
+    <script>
+        // (Bagian prevent scroll & animasi tetap sama seperti punyamu)
 
-    <!-- Birthday Message Section -->
-    <section class="section message-section" id="messageSection">
-      <div class="message-content">
-        <h2 class="birthday-title">🎉Selamat Ulang Tahun!🎉</h2>
-        <p class="message-text" id="personalMessage">
-          Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran orang yang paling berarti dalam hidupku. 
-          <br><br>
-          Setiap detik bersamamu adalah anugerah yang tak ternilai. Senyummu adalah sinar matahari yang menerangi hariku, 
-          tawamu adalah melodi terindah yang pernah kudengar, dan cintamu adalah rumah yang paling nyaman bagiku.
-          <br><br>
-          Di hari spesialmu ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu. Kamu bukan hanya kekasih, 
-          tapi juga sahabat terbaik, partner hidup, dan alasan aku untuk terus berkembang menjadi lebih baik.
-        </p>
+        function playMusic() {
+            const music = document.getElementById('bgMusic');
+            music.play().catch(err => {
+                console.log("Autoplay dicegah, menunggu interaksi user.", err);
+            });
+        }
 
-        <div class="photo-gallery">
-          <div class="photo">📸</div>
-          <div class="photo">💕</div>
-        </div>
+        function startSurprise() {
+            // 🔊 Putar musik saat user klik tombol
+            playMusic();
 
-        <button class="btn next-btn" onclick="showSurprise()">Masih Ada Lagi! 🎁</button>
-      </div>
-    </section>
+            // Haptic feedback untuk iOS
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(200);
+            }
 
-    <!-- Final Surprise Section -->
-    <section class="section surprise-section" id="surpriseSection">
-      <div class="message-content">
-        <div class="cake">🎂</div>
-        <h2 class="birthday-title" id="finalTitle">Happy Birthday My Love!</h2>
-        <p class="final-message">
-          Semoga di tahun yang baru ini, semua impian dan harapanmu menjadi kenyataan. 
-          Semoga kebahagiaan selalu menyertai langkahmu, dan semoga cinta kita terus tumbuh semakin kuat setiap harinya.
-          <br><br>
-          Aku berjanji akan selalu ada untukmu, dalam suka maupun duka, dalam tertawa maupun tangis. 
-          Karena kamu adalah pilihan terbaik yang pernah aku buat dalam hidup ini.
-          <br><br>
-          <strong>🎈 Selamat Ulang Tahun, Cinta! 🎈</strong>
-          <br>
-          <em>With all my love, forever and always ❤️</em>
-        </p>
-      </div>
-    </section>
-  </div>
+            // Transisi ke message section
+            const welcomeSection = document.getElementById('welcomeSection');
+            const messageSection = document.getElementById('messageSection');
 
-  <script>
-    // Fungsi play musik
-    function playMusic() {
-      const music = document.getElementById('bgMusic');
-      music.play().catch(err => {
-        console.log("Autoplay dicegah, menunggu interaksi user.", err);
-      });
-    }
+            welcomeSection.style.opacity = '0';
+            welcomeSection.style.transform = 'translateY(-50px)';
 
-    // Start kejutan langsung pakai nama fix
-    function startSurprise() {
-      const name = "Syafiratul Atika S.Psi";
+            setTimeout(() => {
+                welcomeSection.style.display = 'none';
+                messageSection.style.display = 'flex';
+                messageSection.scrollIntoView({ behavior: 'smooth' });
+                createSparkles(messageSection);
+            }, 300);
+        }
+        
+        function showSurprise() {
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate([100, 50, 100]);
+            }
+            
+            const messageSection = document.getElementById('messageSection');
+            const surpriseSection = document.getElementById('surpriseSection');
+            
+            messageSection.style.opacity = '0';
+            messageSection.style.transform = 'translateY(-50px)';
+            
+            setTimeout(() => {
+                messageSection.style.display = 'none';
+                surpriseSection.style.display = 'flex';
+                surpriseSection.scrollIntoView({ behavior: 'smooth' });
+                createSparkles(surpriseSection);
+                setTimeout(() => {
+                    for (let i = 0; i < 30; i++) {
+                        createConfetti();
+                    }
+                }, 500);
+            }, 300);
+        }
 
-      // 🔊 Putar musik saat user klik tombol
-      playMusic();
-
-      // Update personal message dengan nama
-      const personalMessage = document.getElementById('personalMessage');
-      personalMessage.innerHTML = personalMessage.innerHTML.replace(
-        'orang yang paling berarti dalam hidupku',
-        name + ', orang yang paling berarti dalam hidupku'
-      );
-
-      // Update final title
-      document.getElementById('finalTitle').innerHTML = `Happy Birthday ${name}! 🎉`;
-
-      // Transisi ke message section
-      const welcomeSection = document.getElementById('welcomeSection');
-      const messageSection = document.getElementById('messageSection');
-
-      welcomeSection.style.opacity = '0';
-      welcomeSection.style.transform = 'translateY(-50px)';
-
-      setTimeout(() => {
-        welcomeSection.style.display = 'none';
-        messageSection.style.display = 'flex';
-        messageSection.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-    }
-
-    function showSurprise() {
-      const messageSection = document.getElementById('messageSection');
-      const surpriseSection = document.getElementById('surpriseSection');
-
-      messageSection.style.opacity = '0';
-      messageSection.style.transform = 'translateY(-50px)';
-
-      setTimeout(() => {
-        messageSection.style.display = 'none';
-        surpriseSection.style.display = 'flex';
-        surpriseSection.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-    }
-
-    // Efek hati tetap aktif
-    function createHearts() {
-      const heartsContainer = document.getElementById('hearts');
-      const heartSymbols = ['💖', '💕', '💗', '💓', '💝', '🌹', '✨'];
-      setInterval(() => {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-        heart.style.animationDelay = Math.random() * 2 + 's';
-        heartsContainer.appendChild(heart);
-        setTimeout(() => { heart.remove(); }, 8000);
-      }, 300);
-    }
-    createHearts();
-  </script>
+        // (Fungsi createHearts, createSparkles, createConfetti tetap sama seperti punyamu)
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartSymbols = ['💖', '💕', '💗', '💓', '💝', '🌹', '✨'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }, 300);
+        }
+        
+        function createSparkles(element) {
+            const sparkles = ['✨', '⭐', '💫', '🌟'];
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.innerHTML = sparkles[Math.floor(Math.random() * sparkles.length)];
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.top = Math.random() * 100 + '%';
+                    element.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 2000);
+                }, i * 200);
+            }
+        }
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            const confettiSymbols = ['🎉', '🎊', '🎈', '🎁', '🌈', '⭐', '✨'];
+            confetti.innerHTML = confettiSymbols[Math.floor(Math.random() * confettiSymbols.length)];
+            confetti.style.position = 'fixed';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.fontSize = Math.random() * 20 + 15 + 'px';
+            confetti.style.zIndex = '1000';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.animation = `float ${Math.random() * 3 + 2}s linear forwards`;
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 5000);
+        }
+        
+        // Initialize hearts animation
+        createHearts();
+        
+        // Add click effects to photos
+        document.querySelectorAll('.photo').forEach(photo => {
+            photo.addEventListener('click', function() {
+                this.style.transform = 'scale(1) rotate(10deg)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                }, 300);
+                createSparkles(this);
+            });
+        });
+        
+        // Add music note animation on scroll
+        window.addEventListener('scroll', () => {
+            if (Math.random() < 0.1) {
+                const note = document.createElement('div');
+                note.innerHTML = '🎵';
+                note.style.position = 'fixed';
+                note.style.right = '20px';
+                note.style.top = Math.random() * window.innerHeight + 'px';
+                note.style.fontSize = '24px';
+                note.style.zIndex = '999';
+                note.style.pointerEvents = 'none';
+                note.style.animation = 'float 3s linear forwards';
+                document.body.appendChild(note);
+                
+                setTimeout(() => note.remove(), 3000);
+            }
+        });
+    </script>
 </body>
 </html>
