@@ -152,7 +152,7 @@
         
         function createSparkles(element) {
             const sparkles = ['✨', '⭐', '💫', '🌟'];
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 10; i++) {
                 setTimeout(() => {
                     const sparkle = document.createElement('div');
                     sparkle.className = 'sparkle';
@@ -187,7 +187,7 @@
         // Add click effects to photos
         document.querySelectorAll('.photo').forEach(photo => {
             photo.addEventListener('click', function() {
-                this.style.transform = 'scale(1) rotate(10deg)';
+                this.style.transform = 'scale(1) rotate(5deg)';
                 setTimeout(() => {
                     this.style.transform = 'scale(1) rotate(0deg)';
                 }, 300);
@@ -206,7 +206,7 @@
                 note.style.fontSize = '24px';
                 note.style.zIndex = '999';
                 note.style.pointerEvents = 'none';
-                note.style.animation = 'float 3s linear forwards';
+                note.style.animation = 'float 2s linear forwards';
                 document.body.appendChild(note);
                 
                 setTimeout(() => note.remove(), 3000);
