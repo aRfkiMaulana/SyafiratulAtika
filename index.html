@@ -109,13 +109,12 @@
             const welcomeSection = document.getElementById('welcomeSection');
             const messageSection = document.getElementById('messageSection');
 
-            welcomeSection.style.opacity = '0';
-            welcomeSection.style.transform = 'translateY(-50px)';
+            welcomeSection.classList.remove('active');
 
             setTimeout(() => {
                 welcomeSection.style.display = 'none';
                 messageSection.style.display = 'flex';
-                messageSection.scrollIntoView({ behavior: 'smooth' });
+                messageSection.classList.add('active');
                 createSparkles(messageSection);
 
                 typeText(); 
