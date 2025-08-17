@@ -212,23 +212,6 @@
             });
         });
         
-        // Add music note animation on scroll
-        window.addEventListener('scroll', () => {
-            if (Math.random() < 0.1) {
-                const note = document.createElement('div');
-                note.innerHTML = '🎵';
-                note.style.position = 'fixed';
-                note.style.right = '20px';
-                note.style.top = Math.random() * window.innerHeight + 'px';
-                note.style.fontSize = '24px';
-                note.style.zIndex = '999';
-                note.style.pointerEvents = 'none';
-                note.style.animation = 'float 10s linear forwards';
-                document.body.appendChild(note);
-                
-                setTimeout(() => note.remove(), 11000);
-            }
-        });
     </script>
 </body>
 </html>
