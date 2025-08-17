@@ -32,15 +32,7 @@
         <section class="section message-section" id="messageSection">
             <div class="message-content">
                 <h2 class="birthday-title">🎉Selamat Ulang Tahun!🎉</h2>
-                <p class="message-text" id="personalMessage">
-                    Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran Syafiratul Atika S.Psi, orang yang paling berarti dalam hidupku. 
-                    <br><br>
-                    Setiap detik bersamamu adalah anugerah yang tak ternilai. Senyummu adalah sinar matahari yang menerangi hariku, 
-                    tawamu adalah melodi terindah yang pernah kudengar, dan cintamu adalah rumah yang paling nyaman bagiku.
-                    <br><br>
-                    Di hari spesialmu ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu. Kamu bukan hanya kekasih, 
-                    tapi juga sahabat terbaik, partner hidup, dan alasan aku untuk terus berkembang menjadi lebih baik.
-                </p>
+                <p class="message-text" id="personalMessage"></p>
                 
                 <div class="photo-gallery">
                     <div class="photo">📸</div>
@@ -72,6 +64,25 @@
     </div>
 
     <script>
+        // tesk ketik 
+         const message = `Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran Syafiratul Atika S.Psi, orang yang paling berarti dalam hidupku. 
+            Setiap detik bersamamu adalah anugerah yang tak ternilai. Senyummu adalah sinar matahari yang menerangi hariku, 
+            tawamu adalah melodi terindah yang pernah kudengar, dan cintamu adalah rumah yang paling nyaman bagiku.
+            Di hari spesialmu ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu. Kamu bukan hanya kekasih, 
+            tapi juga sahabat terbaik, partner hidup, dan alasan aku untuk terus berkembang menjadi lebih baik.`;
+
+        const container = document.getElementById('personalMessage');
+        let index = 0;
+
+        function typeText() {
+            if (index < message.length) {
+                container.innerHTML += message.charAt(index) === '\n' ? '<br><br>' : message.charAt(index);
+                index++;
+                setTimeout(typeText, 70); // kecepatan mengetik (ms)
+            }
+        }
+
+        typeText();
         // (Bagian prevent scroll & animasi tetap sama seperti punyamu)
 
         function playMusic() {
@@ -206,10 +217,10 @@
                 note.style.fontSize = '24px';
                 note.style.zIndex = '999';
                 note.style.pointerEvents = 'none';
-                note.style.animation = 'float 2s linear forwards';
+                note.style.animation = 'float 10s linear forwards';
                 document.body.appendChild(note);
                 
-                setTimeout(() => note.remove(), 3000);
+                setTimeout(() => note.remove(), 11000);
             }
         });
     </script>
