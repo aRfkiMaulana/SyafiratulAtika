@@ -67,8 +67,6 @@
         html, body {
             overscroll-behavior: none;
             overflow-x: hidden;
-            margin: 0;
-            padding: 0;
         }
         
         .section {
@@ -79,13 +77,8 @@
             justify-content: center;
             padding: 1rem;
             text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
         }
         
-        .section.active {
-            opacity: 1;
-        }
         .welcome-section {
             position: relative;
         }
