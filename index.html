@@ -65,7 +65,7 @@
 
     <script>
         // tesk ketik 
-         document.addEventListener('DOMContentLoaded', () => {
+        function typeText() {
             const message = `Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran Syafiratul Atika S.Psi, orang yang paling berarti dalam hidupku. 
             Setiap detik bersamamu adalah anugerah yang tak ternilai. Senyummu adalah sinar matahari yang menerangi hariku, tawamu adalah melodi terindah yang pernah kudengar, dan cintamu adalah rumah yang paling nyaman bagiku.
             Di hari spesialmu ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu. Kamu bukan hanya kekasih, tapi juga sahabat terbaik, partner hidup, dan alasan aku untuk terus berkembang menjadi lebih baik.`;
@@ -75,16 +75,17 @@
 
             const chars = Array.from(message); // supaya emoji dihitung satu per satu
 
-            function typeText() {
+            function typeNext() {
                 if (index < chars.length) {
                     container.innerHTML += chars[index] === '\n' ? '<br><br>' : chars[index];
                     index++;
-                    setTimeout(typeText, 40);
+                    setTimeout(typeNext, 60);
                 }
             }
 
-            typeText();
-        });
+            typeNext();
+        }
+
 
         // (Bagian prevent scroll & animasi tetap sama seperti punyamu)
 
@@ -116,7 +117,9 @@
                 messageSection.style.display = 'flex';
                 messageSection.scrollIntoView({ behavior: 'smooth' });
                 createSparkles(messageSection);
-            }, 300);
+
+                typeText(); 
+            }, 1000);
         }
         
         function showSurprise() {
