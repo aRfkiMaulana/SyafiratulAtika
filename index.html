@@ -91,41 +91,34 @@
 
         /* ===== Photo Section ===== */
         .photo-section {
-            background: linear-gradient(135deg, #fceabb, #f8b500);
+            background: linear-gradient(135deg, #ffcd4e, #ffca38);
             color: #333;
             display: none;
         }
         
-        .photo-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-family: "Dancing Script", cursive, sans-serif;
-            color: #8B4513;
-            font-weight: 700;
-        }
 
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            max-width: 100px;
-            margin: 0 auto;
-        }
-
-        .photo-item {
-            width: 100%;
-            height: 350px;
-            border-radius: 12px;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        /* Paksa ubah ukuran kotak foto */
+        .photo-grid .photo-item {
+            width: 100% !important;
+            height: 350px !important;  /* kotak foto lebih tinggi */
+            padding: 4px !important;  /* ruang dalam lebih besar */
+            background: #fff !important;
+            border-radius: 16px !important;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             transform: rotate(-2deg);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: white;
-            padding: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+            overflow: hidden !important;  /* sembunyikan bagian yang keluar */
+        }
+
+        /* Paksa gambar ikut memenuhi kotak */
+        .photo-grid .photo-item img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;  /* isi penuh kotak */
+            border-radius: 12px !important;
         }
 
         .photo-item:nth-child(even) {
@@ -402,33 +395,6 @@
             text-align: left;
         }
         
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .photo {
-            width: 100%;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: visible;
-        }
-        
-        .photo:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
         .wishes {
             display: flex;
             flex-wrap: wrap;
@@ -523,16 +489,6 @@
                 margin-bottom: 2rem;
             }
             
-            .photo-gallery {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.8rem;
-            }
-            
-            .photo {
-                height: 120px;
-                font-size: 2.5rem;
-            }
-            
             .wishes {
                 gap: 0.8rem;
             }
@@ -550,16 +506,6 @@
             /* Mobile optimizations for new sections */
             .photo-section h2 {
                 font-size: 1.5rem;
-            }
-
-            .photo-grid {
-                max-width: 320px;
-                gap: 0.6rem;
-            }
-
-            .photo-item {
-                height: 120px;
-                font-size: 2.5rem;
             }
 
             .love-section h2 {
