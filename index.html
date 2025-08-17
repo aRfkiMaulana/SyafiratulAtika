@@ -106,16 +106,15 @@
 
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.8rem;
-            width: 100%;
-            max-width: 400px;
-            margin: 1rem auto;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            max-width: 100px;
+            margin: 0 auto;
         }
 
         .photo-item {
             width: 100%;
-            height: 150px;
+            height: 350px;
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -127,11 +126,17 @@
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            cursor: pointer;
         }
 
         .photo-item:nth-child(even) {
             transform: rotate(2deg);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
         }
 
         .photo-item:hover {
@@ -495,7 +500,7 @@
             
             .cake {
                 font-size: 6rem;
-                margin: 1.5rem 0;
+                margin: 1rem 0;
             }
             
             .input-field, .btn {
@@ -622,11 +627,6 @@
                 <h2 class="birthday-title">🎉Selamat Ulang Tahun!🎉</h2>
                 <p class="message-text" id="personalMessage"></p>
                 
-                <div class="photo-gallery">
-                    <div class="photo">📸</div>
-                    <div class="photo">💕</div>
-                </div>
-                
                 <button class="btn next-btn" onclick="showPhotos()">Lihat Kenangan Kita! 📷</button>
             </div>
         </section>
@@ -638,12 +638,24 @@
                 <p style="color: #8B4513; margin-bottom: 1rem;">Setiap foto menyimpan cerita cinta kita...</p>
                 
                 <div class="photo-grid">
-                    <div class="photo-item" onclick="animatePhoto(this)">🥰</div>
-                    <div class="photo-item" onclick="animatePhoto(this)">😘</div>
-                    <div class="photo-item" onclick="animatePhoto(this)">💑</div>
-                    <div class="photo-item" onclick="animatePhoto(this)">🌹</div>
-                    <div class="photo-item" onclick="animatePhoto(this)">💝</div>
-                    <div class="photo-item" onclick="animatePhoto(this)">💖</div>
+                    <div class="photo-item" onclick="animatePhoto(this)">
+                        <img src="images/1.jpg" alt="Foto 1">
+                    </div>
+                    <div class="photo-item" onclick="animatePhoto(this)">
+                        <img src="images/foto2.jpg" alt="Foto 2">
+                    </div>
+                    <div class="photo-item" onclick="animatePhoto(this)">
+                        <img src="images/foto3.jpg" alt="Foto 3">
+                    </div>
+                    <div class="photo-item" onclick="animatePhoto(this)">
+                        <img src="images/foto4.jpg" alt="Foto 4">
+                    </div>
+                    <div class="photo-item" onclick="animatePhoto(this)">
+                        <img src="images/foto5.jpg" alt="Foto 5">
+                    </div>
+                    <div class="photo-item" onclick="animatePhoto(this)">
+                        <img src="images/foto6.jpg" alt="Foto 6">
+                    </div>
                 </div>
                 
                 <button class="btn" onclick="showLoveGame()">Main Yuk! 💕</button>
@@ -690,7 +702,7 @@
                     Aku berjanji akan selalu ada untukmu, dalam suka maupun duka, dalam tertawa maupun tangis. 
                     Karena kamu adalah pilihan terbaik yang pernah aku buat dalam hidup ini.
                     <br><br>
-                    <strong>🎈 Selamat Ulang Tahun, Cinta! 🎈</strong>
+                    <strong>🎈 Selamat Ulang Tahun, Cinta!🎈</strong>
                     <br>
                     <em>With all my love, forever and always ❤️</em>
                 </p>
