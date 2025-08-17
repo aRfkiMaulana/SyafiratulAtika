@@ -35,8 +35,8 @@
                 <p class="message-text" id="personalMessage"></p>
                 
                 <div class="photo-gallery">
-                    <div class="photo">📸</div>
-                    <div class="photo">💕</div>
+                    <div class="photo" onclick="goToPage('hal2.html')">📸</div>
+                    <div class="photo" onclick="goToPage('hal3.html')">💕</div>
                 </div>
                 
                 <button class="btn next-btn" onclick="showSurprise()">Masih Ada Lagi! 🎁</button>
@@ -210,6 +210,11 @@
                 createSparkles(this);
             });
         });
+
+        // halaman
+        function goToPage(page) {
+            window.location.href = page;
+        }
     </script>
 </body>
 </html>
