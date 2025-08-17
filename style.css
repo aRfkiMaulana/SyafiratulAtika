@@ -63,11 +63,6 @@
                 opacity: 0;
             }
         }
-        /* scroll */
-        html, body {
-            overscroll-behavior: contain;
-            overflow-x: hidden;
-        }
         
         .section {
             min-height: 100vh;
