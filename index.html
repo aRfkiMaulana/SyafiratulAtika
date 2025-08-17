@@ -7,7 +7,596 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#ff6b6b">
     <title>Happy Birthday My Love 💕</title>
-    <link rel="stylesheet" href="style.css ">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #ff6b6b, #ffa500, #ff1744, #e91e63, #9c27b0);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+            min-height: 100dvh;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        html, body {
+            overscroll-behavior: none;
+            overflow-x: hidden;
+        }
+        
+        .section {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* ===== Photo Section ===== */
+        .photo-section {
+            background: linear-gradient(135deg, #fceabb, #f8b500);
+            color: #333;
+            display: none;
+        }
+        
+        .photo-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-family: "Dancing Script", cursive, sans-serif;
+            color: #8B4513;
+            font-weight: 700;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem auto;
+        }
+
+        .photo-item {
+            width: 100%;
+            height: 150px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+
+        .photo-item:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .photo-item:hover {
+            transform: scale(1.05) rotate(0deg);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        /* ===== Love Section ===== */
+        .love-section {
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            color: #fff;
+            display: none;
+        }
+
+        .love-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-family: "Dancing Script", cursive;
+            font-weight: 700;
+        }
+
+        .love-message {
+            max-width: 360px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0 auto 1.5rem auto;
+            background: rgba(255,255,255,0.15);
+            padding: 1rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .game-container {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .game-cell {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.8);
+            border: none;
+            border-radius: 10px;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .game-cell:hover {
+            background: rgba(255,255,255,0.9);
+            transform: scale(1.05);
+        }
+
+        .game-cell:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .game-status {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .game-reset {
+            background: rgba(255,255,255,0.9);
+            color: #e91e63;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .game-reset:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* ===== Tombol Umum ===== */
+        .btn {
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            background: #fff;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease, background 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #eee;
+            transform: scale(1.05);
+        }
+        
+        .welcome-section {
+            position: relative;
+        }
+        
+        .welcome-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            transform: scale(0);
+            animation: scaleIn 1s ease-out 0.5s forwards;
+        }
+        
+        @keyframes scaleIn {
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff6b6b;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff6b6b;
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .name-input {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .input-field {
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .input-field:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+        }
+        
+        .message-section {
+            display: none;
+        }
+        
+        .message-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .birthday-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .message-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .photo {
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .photo:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .wishes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .wish-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 500;
+            animation: wishFloat 3s infinite ease-in-out;
+        }
+        
+        .wish-item:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes wishFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .next-btn {
+            margin-top: 2rem;
+        }
+        
+        .surprise-section {
+            display: none;
+        }
+        
+        .cake {
+            font-size: 8rem;
+            margin: 1rem 0;
+        }
+        
+        .final-message {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.1rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+            }
+            
+            .birthday-title {
+                font-size: 1.6rem;
+                text-align: center;
+                color: pink;
+            }
+            
+            .message-content, .welcome-content {
+                padding: 2rem 1.5rem;
+                margin: 0.5rem;
+                border-radius: 20px;
+            }
+            
+            .cake {
+                font-size: 6rem;
+                margin: 1.5rem 0;
+            }
+            
+            .input-field, .btn {
+                font-size: 1rem;
+                padding: 18px 20px;
+            }
+            
+            .message-text {
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
+            
+            .final-message {
+                font-size: 1.2rem;
+                line-height: 1.7;
+            }
+            
+            .subtitle {
+                font-size: 0.8rem;
+                margin-bottom: 2rem;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            
+            .photo {
+                height: 120px;
+                font-size: 2.5rem;
+            }
+            
+            .wishes {
+                gap: 0.8rem;
+            }
+            
+            .wish-item {
+                padding: 12px 18px;
+                font-size: 0.95rem;
+            }
+            
+            .title, .birthday-title {
+                -webkit-user-select: none;
+                user-select: none;
+            }
+
+            /* Mobile optimizations for new sections */
+            .photo-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .photo-grid {
+                max-width: 320px;
+                gap: 0.6rem;
+            }
+
+            .photo-item {
+                height: 120px;
+                font-size: 2.5rem;
+            }
+
+            .love-section h2 {
+                font-size: 1.7rem;
+            }
+
+            .love-message {
+                font-size: 1rem;
+                padding: 0.8rem;
+                max-width: 300px;
+            }
+
+            .game-cell {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .game-status {
+                font-size: 1.1rem;
+            }
+        }
+        
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            color: #fff;
+            animation: sparkle 5s infinite;
+            z-index: 9999;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 <audio id="bgMusic" loop>
   <source src="Sal.mp3" type="audio/mpeg">
@@ -22,7 +611,6 @@
                 <h1 class="title">💕Special Surprise💕</h1>
                 <p class="subtitle">Ada yang istimewa untukmu hari ini...</p>
                 <div class="name-input">
-                    <!-- Input dihapus, hanya tombol -->
                     <button class="btn" onclick="startSurprise()">Mulai Kejutan! ✨</button>
                 </div>
             </div>
@@ -35,11 +623,58 @@
                 <p class="message-text" id="personalMessage"></p>
                 
                 <div class="photo-gallery">
-                    <div class="photo" onclick="goToPage('hal2.html')">📸</div>
-                    <div class="photo" onclick="goToPage('hal3.html')">💕</div>
+                    <div class="photo">📸</div>
+                    <div class="photo">💕</div>
                 </div>
                 
-                <button class="btn next-btn" onclick="showSurprise()">Masih Ada Lagi! 🎁</button>
+                <button class="btn next-btn" onclick="showPhotos()">Lihat Kenangan Kita! 📷</button>
+            </div>
+        </section>
+
+        <!-- Photo Section -->
+        <section class="section photo-section" id="photoSection">
+            <div class="message-content">
+                <h2>📸 Kenangan Indah Kita 📸</h2>
+                <p style="color: #8B4513; margin-bottom: 1rem;">Setiap foto menyimpan cerita cinta kita...</p>
+                
+                <div class="photo-grid">
+                    <div class="photo-item" onclick="animatePhoto(this)">🥰</div>
+                    <div class="photo-item" onclick="animatePhoto(this)">😘</div>
+                    <div class="photo-item" onclick="animatePhoto(this)">💑</div>
+                    <div class="photo-item" onclick="animatePhoto(this)">🌹</div>
+                    <div class="photo-item" onclick="animatePhoto(this)">💝</div>
+                    <div class="photo-item" onclick="animatePhoto(this)">💖</div>
+                </div>
+                
+                <button class="btn" onclick="showLoveGame()">Main Yuk! 💕</button>
+            </div>
+        </section>
+
+        <!-- Love Game Section -->
+        <section class="section love-section" id="loveSection">
+            <div class="message-content">
+                <h2>💕 Love Game 💕</h2>
+                <div class="love-message">
+                    Ayo main TicTacToe dengan simbol cinta! Kamu jadi ❤️ dan aku jadi 💙
+                </div>
+                
+                <div class="game-container">
+                    <div class="game-status" id="gameStatus">Giliran kamu! ❤️</div>
+                    <div class="game-board" id="gameBoard">
+                        <button class="game-cell" onclick="makeMove(0)"></button>
+                        <button class="game-cell" onclick="makeMove(1)"></button>
+                        <button class="game-cell" onclick="makeMove(2)"></button>
+                        <button class="game-cell" onclick="makeMove(3)"></button>
+                        <button class="game-cell" onclick="makeMove(4)"></button>
+                        <button class="game-cell" onclick="makeMove(5)"></button>
+                        <button class="game-cell" onclick="makeMove(6)"></button>
+                        <button class="game-cell" onclick="makeMove(7)"></button>
+                        <button class="game-cell" onclick="makeMove(8)"></button>
+                    </div>
+                    <button class="game-reset" onclick="resetGame()">Main Lagi 🔄</button>
+                </div>
+                
+                <button class="btn" onclick="showFinalSurprise()">Kejutan Terakhir! 🎁</button>
             </div>
         </section>
         
@@ -64,6 +699,11 @@
     </div>
 
     <script>
+        // Game variables
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let currentPlayer = '❤️'; // Player starts
+        let gameActive = true;
+        
         // tesk ketik 
         function typeText() {
             const message = `Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran Syafiratul Atika S.Psi, orang yang paling berarti dalam hidupku. 
@@ -73,21 +713,18 @@
             const container = document.getElementById('personalMessage');
             let index = 0;
 
-            const chars = Array.from(message); // supaya emoji dihitung satu per satu
+            const chars = Array.from(message);
 
             function typeNext() {
                 if (index < chars.length) {
                     container.innerHTML += chars[index] === '\n' ? '<br><br>' : chars[index];
                     index++;
-                    setTimeout(typeNext, 70);
+                    setTimeout(typeNext, 60);
                 }
             }
 
             typeNext();
         }
-
-
-        // (Bagian prevent scroll & animasi tetap sama seperti punyamu)
 
         function playMusic() {
             const music = document.getElementById('bgMusic');
@@ -97,15 +734,12 @@
         }
 
         function startSurprise() {
-            // 🔊 Putar musik saat user klik tombol
             playMusic();
 
-            // Haptic feedback untuk iOS
             if (window.navigator.vibrate) {
                 window.navigator.vibrate(200);
             }
 
-            // Transisi ke message section
             const welcomeSection = document.getElementById('welcomeSection');
             const messageSection = document.getElementById('messageSection');
 
@@ -118,7 +752,149 @@
                 createSparkles(messageSection);
 
                 typeText(); 
-            }, 1000);
+            }, 100);
+        }
+
+        function showPhotos() {
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate([100, 50, 100]);
+            }
+            
+            const messageSection = document.getElementById('messageSection');
+            const photoSection = document.getElementById('photoSection');
+            
+            messageSection.style.opacity = '0';
+            messageSection.style.transform = 'translateY(-50px)';
+            
+            setTimeout(() => {
+                messageSection.style.display = 'none';
+                photoSection.style.display = 'flex';
+                photoSection.scrollIntoView({ behavior: 'smooth' });
+                createSparkles(photoSection);
+            }, 300);
+        }
+
+        function animatePhoto(photo) {
+            photo.style.transform = 'scale(1.2) rotate(10deg)';
+            setTimeout(() => {
+                photo.style.transform = 'scale(1) rotate(-2deg)';
+            }, 200);
+            createSparkles(photo);
+            
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(100);
+            }
+        }
+
+        function showLoveGame() {
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate([100, 50, 100]);
+            }
+            
+            const photoSection = document.getElementById('photoSection');
+            const loveSection = document.getElementById('loveSection');
+            
+            photoSection.style.opacity = '0';
+            photoSection.style.transform = 'translateY(-50px)';
+            
+            setTimeout(() => {
+                photoSection.style.display = 'none';
+                loveSection.style.display = 'flex';
+                loveSection.scrollIntoView({ behavior: 'smooth' });
+                createSparkles(loveSection);
+                resetGame();
+            }, 300);
+        }
+
+        function makeMove(cellIndex) {
+            if (gameBoard[cellIndex] !== '' || !gameActive) {
+                return;
+            }
+
+            gameBoard[cellIndex] = currentPlayer;
+            document.querySelectorAll('.game-cell')[cellIndex].innerHTML = currentPlayer;
+            
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(50);
+            }
+
+            if (checkWinner()) {
+                document.getElementById('gameStatus').innerHTML = 
+                    currentPlayer === '❤️' ? 'Kamu menang! 🎉' : 'Aku menang! 😘';
+                gameActive = false;
+                return;
+            }
+
+            if (gameBoard.every(cell => cell !== '')) {
+                document.getElementById('gameStatus').innerHTML = 'Seri! Cinta kita sama kuat 💕';
+                gameActive = false;
+                return;
+            }
+
+            currentPlayer = currentPlayer === '❤️' ? '💙' : '❤️';
+            document.getElementById('gameStatus').innerHTML = 
+                currentPlayer === '❤️' ? 'Giliran kamu! ❤️' : 'Giliran aku! 💙';
+
+            // Simple AI for computer player
+            if (currentPlayer === '💙' && gameActive) {
+                setTimeout(() => {
+                    computerMove();
+                }, 500);
+            }
+        }
+
+        function computerMove() {
+            const emptyCells = gameBoard.map((cell, index) => cell === '' ? index : null).filter(val => val !== null);
+            if (emptyCells.length > 0) {
+                const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                makeMove(randomIndex);
+            }
+        }
+
+        function checkWinner() {
+            const winPatterns = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+                [0, 4, 8], [2, 4, 6] // diagonals
+            ];
+
+            return winPatterns.some(pattern => {
+                return pattern.every(index => gameBoard[index] === currentPlayer);
+            });
+        }
+
+        function resetGame() {
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            currentPlayer = '❤️';
+            gameActive = true;
+            document.getElementById('gameStatus').innerHTML = 'Giliran kamu! ❤️';
+            document.querySelectorAll('.game-cell').forEach(cell => {
+                cell.innerHTML = '';
+            });
+        }
+
+        function showFinalSurprise() {
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate([100, 50, 100]);
+            }
+            
+            const loveSection = document.getElementById('loveSection');
+            const surpriseSection = document.getElementById('surpriseSection');
+            
+            loveSection.style.opacity = '0';
+            loveSection.style.transform = 'translateY(-50px)';
+            
+            setTimeout(() => {
+                loveSection.style.display = 'none';
+                surpriseSection.style.display = 'flex';
+                surpriseSection.scrollIntoView({ behavior: 'smooth' });
+                createSparkles(surpriseSection);
+                setTimeout(() => {
+                    for (let i = 0; i < 30; i++) {
+                        createConfetti();
+                    }
+                }, 500);
+            }, 300);
         }
         
         function showSurprise() {
@@ -145,7 +921,6 @@
             }, 300);
         }
 
-        // (Fungsi createHearts, createSparkles, createConfetti tetap sama seperti punyamu)
         // Create floating hearts
         function createHearts() {
             const heartsContainer = document.getElementById('hearts');
@@ -181,6 +956,7 @@
                 }, i * 200);
             }
         }
+        
         function createConfetti() {
             const confetti = document.createElement('div');
             const confettiSymbols = ['🎉', '🎊', '🎈', '🎁', '🌈', '⭐', '✨'];
@@ -210,11 +986,6 @@
                 createSparkles(this);
             });
         });
-
-        // halaman
-        function goToPage(page) {
-            window.location.href = page;
-        }
     </script>
 </body>
 </html>

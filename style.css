@@ -78,6 +78,89 @@
             padding: 1rem;
             text-align: center;
         }
+
+        /* ===== Photo Section ===== */
+        .photo-section {
+        background: linear-gradient(135deg, #fceabb, #f8b500);
+        color: #333;
+        }
+        
+
+        .photo-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+
+        .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        width: 100%;
+        max-width: 400px;
+        }
+
+        .photo-grid img {
+        width: 100%;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transform: rotate(-2deg);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: white;
+        padding: 4px;
+        }
+
+        .photo-grid img:nth-child(even) {
+        transform: rotate(2deg);
+        }
+
+        .photo-grid img:hover {
+        transform: scale(1.05) rotate(0deg);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        /* ===== Love Section ===== */
+        .love-section {
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        color: #fff;
+        }
+
+        .love-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-family: "Brush Script MT", cursive;
+        }
+
+        .love-message {
+        max-width: 360px;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin: 0 auto;
+        background: rgba(255,255,255,0.15);
+        padding: 1rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* ===== Tombol Umum ===== */
+        .btn {
+        margin-top: 1.5rem;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 25px;
+        background: #fff;
+        color: #333;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .btn:hover {
+        background: #eee;
+        transform: scale(1.05);
+        }
         
         .welcome-section {
             position: relative;
@@ -399,4 +482,5 @@
                 transform: scale(1);
             }
         }
+        
     

@@ -374,18 +374,6 @@
     </header>
 
     <div class="gallery-container">
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Semua Foto</button>
-            <button class="filter-btn" data-filter="date">Kencan</button>
-            <button class="filter-btn" data-filter="travel">Jalan-jalan</button>
-            <button class="filter-btn" data-filter="special">Momen Spesial</button>
-            <button class="filter-btn" data-filter="selfie">Selfie</button>
-        </div>
-
-        <div class="love-counter">
-            <h3>Total Kenangan Indah</h3>
-            <div class="memories-count" id="memoriesCount">0</div>
-        </div>
 
         <div class="photo-grid" id="photoGrid">
             <!-- Foto akan ditambahkan secara dinamis -->
@@ -403,9 +391,12 @@
         </div>
     </div>
 
-    <button class="add-photo-btn" onclick="addPhotoPrompt()" title="Tambah Foto">📸</button>
-
     <script>
+
+         function startMusic() {
+            const music = document.getElementById('bgMusic');
+            music.play().catch(err => console.log("Autoplay dicegah:", err));
+        }
         // Data foto-foto kenangan (Anda bisa mengganti dengan foto asli)
         let photosData = [
             {
