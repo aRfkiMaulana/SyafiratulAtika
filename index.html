@@ -580,8 +580,8 @@
         <!-- Photo Section -->
         <section class="section photo-section" id="photoSection">
             <div class="message-content">
-                <h2>📸 Kenangan Indah Kita 📸</h2>
-                <p style="color: #8B4513; margin-bottom: 1rem;">Setiap foto menyimpan cerita cinta kita...</p>
+                <h2>📸</h2>
+                <p style="color: #8B4513; margin-bottom: 1rem;">coba klik fotonya...</p>
                 
                 <div class="photo-grid">
                     <div class="photo-item" onclick="animatePhoto(this)">
@@ -613,7 +613,7 @@
             <div class="message-content">
                 <h2>💕 Love Game 💕</h2>
                 <div class="love-message">
-                    Ayo main TicTacToe dengan simbol cinta! Kamu jadi ❤️ dan aku jadi 💙
+                    Ayo main TicTacToe! Kamu jadi ❤️ dan aku jadi 💙
                 </div>
                 
                 <div class="game-container">
@@ -648,7 +648,7 @@
                     Aku berjanji akan selalu ada untukmu, dalam suka maupun duka, dalam tertawa maupun tangis. 
                     Karena kamu adalah pilihan terbaik yang pernah aku buat dalam hidup ini.
                     <br><br>
-                    <strong>🎈 Selamat Ulang Tahun, Cinta!🎈</strong>
+                    <strong>🎈 Selamat Ulang Tahun🎈</strong>
                     <br>
                     <em>With all my love, forever and always ❤️</em>
                 </p>
@@ -664,7 +664,7 @@
         
         // tesk ketik 
         function typeText() {
-            const message = `Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran Syafiratul Atika S.Psi, orang yang paling berarti dalam hidupku. 
+            const message = `Hari ini adalah hari yang sangat istimewa, karena hari ini adalah hari kelahiran Syafiratul Atika, salah satu manusia yang paling berarti dalam hidupku. 
             Setiap detik bersamamu adalah anugerah yang tak ternilai. Senyummu adalah sinar matahari yang menerangi hariku, tawamu adalah melodi terindah yang pernah kudengar, dan cintamu adalah rumah yang paling nyaman bagiku.
             Di hari spesialmu ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu. Kamu bukan hanya kekasih, tapi juga sahabat terbaik, partner hidup, dan alasan aku untuk terus berkembang menjadi lebih baik.`;
 
@@ -677,7 +677,7 @@
                 if (index < chars.length) {
                     container.innerHTML += chars[index] === '\n' ? '<br><br>' : chars[index];
                     index++;
-                    setTimeout(typeNext, 60);
+                    setTimeout(typeNext, 40);
                 }
             }
 
@@ -778,13 +778,13 @@
 
             if (checkWinner()) {
                 document.getElementById('gameStatus').innerHTML = 
-                    currentPlayer === '❤️' ? 'Kamu menang! 🎉' : 'Aku menang! 😘';
+                    currentPlayer === '❤️' ? 'Kamu menang! 🎉' : 'Aku menang! 😁';
                 gameActive = false;
                 return;
             }
 
             if (gameBoard.every(cell => cell !== '')) {
-                document.getElementById('gameStatus').innerHTML = 'Seri! Cinta kita sama kuat 💕';
+                document.getElementById('gameStatus').innerHTML = 'Seri!💕';
                 gameActive = false;
                 return;
             }
@@ -848,9 +848,7 @@
                 surpriseSection.scrollIntoView({ behavior: 'smooth' });
                 createSparkles(surpriseSection);
                 setTimeout(() => {
-                    for (let i = 0; i < 30; i++) {
-                        createConfetti();
-                    }
+                        startConfetti(200);
                 }, 500);
             }, 300);
         }
@@ -930,6 +928,12 @@
             
             setTimeout(() => confetti.remove(), 5000);
         }
+        function startConfetti(amount = 50) {
+            for (let i = 0; i < amount; i++) {
+                createConfetti();
+            }
+        }
+        
         
         // Initialize hearts animation
         createHearts();
