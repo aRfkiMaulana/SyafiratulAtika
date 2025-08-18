@@ -47,7 +47,7 @@
             width: 100%;
             height: 100%;
             overflow-x: hidden;
-            z-index: 1;
+            z-index: 3;
             pointer-events: none;
         }
         
@@ -140,9 +140,10 @@
 
         /* ===== Love Section ===== */
         .love-section {
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            background: linear-gradient(135deg, #ff9ba7, #ff7f90);
             color: #fff;
             display: none;
+            position: relative;
         }
 
         .love-section h2 {
@@ -574,7 +575,7 @@
                 <h2 class="birthday-title">🎉Selamat Ulang Tahun!🎉</h2>
                 <p class="message-text" id="personalMessage"></p>
                 
-                <button class="btn next-btn" onclick="showPhotos()">Lihat Kenangan Kita! 📷</button>
+                <button class="btn next-btn" onclick="showPhotos()">Lihat Kenangan! 📷</button>
             </div>
         </section>
 
@@ -938,7 +939,6 @@
         
         // Initialize hearts animation
         createHearts();
-        
         // Add click effects to photos
         document.querySelectorAll('.photo').forEach(photo => {
             photo.addEventListener('click', function() {
