@@ -47,7 +47,7 @@
             width: 100%;
             height: 100%;
             overflow-x: hidden;
-            z-index: 2;
+            z-index: 1;
             pointer-events: none;
         }
         
@@ -88,13 +88,14 @@
             justify-content: center;
             padding: 1rem;
             text-align: center;
+            z-index: 0;
+            position: relative;
         }
 
         /* ===== Photo Section ===== */
         .photo-section {
             color: #333;
             display: none;
-            z-index: 1;
             position: relative;
         }
         
@@ -580,13 +581,16 @@
 
         <!-- Photo Section -->
         <section class="section photo-section" id="photoSection">
-            <div class="message-content">
+            <div class="welcome-content">
                 <h2>📸</h2>
                 <p style="color: #8B4513; margin-bottom: 1rem;">coba klik fotonya...</p>
                 
                 <div class="photo-grid">
                     <div class="photo-item" onclick="animatePhoto(this)">
                         <img src="images/1.jpg" alt="Foto 1">
+                    </div>
+                    <div class="photo-item" onclick="animatePhoto(this)">
+                        <img src="images/7.jpg" alt="Foto 1">
                     </div>
                     <div class="photo-item" onclick="animatePhoto(this)">
                         <img src="images/foto2.jpg" alt="Foto 2">
