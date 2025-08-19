@@ -549,6 +549,35 @@
                 transform: scale(1);
             }
         }
+        /* MODAL */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 999; 
+            padding-top: 80px; 
+            left: 0; top: 0;
+            width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            background: #fff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <audio id="bgMusic" loop>
@@ -583,28 +612,28 @@
         <section class="section photo-section" id="photoSection">
             <div class="welcome-content">
                 <h2>📸</h2>
-                <p style="color: #ffffff; margin-bottom: 1rem;">coba klik fotonya...</p>
+                <p style="color: #ffffff; margin-bottom: 1rem;">coba klik fotonya 10x...</p>
                 
                 <div class="photo-grid">
-                    <div class="photo-item" onclick="animatePhoto(this)">
+                    <div class="photo-item" onclick="animatePhoto(this)" data-desc="Deskripsi Foto 1">
                         <img src="images/1.jpg" alt="Foto 1">
                     </div>
-                    <div class="photo-item" onclick="animatePhoto(this)">
+                    <div class="photo-item" onclick="animatePhoto(this)" data-desc="maaf ya waktu seminar proposal & seminar hasil aku nda bisa hadir bahkan aku belum bisa kasih kamu apa apa 😊">
                         <img src="images/foto7.jpg" alt="Foto 7">
                     </div>
-                    <div class="photo-item" onclick="animatePhoto(this)">
+                    <div class="photo-item" onclick="animatePhoto(this)" data-desc="Deskripsi Foto 2">
                         <img src="images/foto2.jpg" alt="Foto 2">
                     </div>
-                    <div class="photo-item" onclick="animatePhoto(this)">
+                    <div class="photo-item" onclick="animatePhoto(this)" data-desc="Deskripsi Foto 3">
                         <img src="images/foto3.jpg" alt="Foto 3">
                     </div>
-                    <div class="photo-item" onclick="animatePhoto(this)">
+                    <div class="photo-item" onclick="animatePhoto(this)" data-desc="Deskripsi Foto 4">
                         <img src="images/foto4.jpg" alt="Foto 4">
                     </div>
-                    <div class="photo-item" onclick="animatePhoto(this)">
+                    <div class="photo-item" onclick="animatePhoto(this)" data-desc="Deskripsi Foto 5">
                         <img src="images/foto5.jpg" alt="Foto 5">
                     </div>
-                    <div class="photo-item" onclick="animatePhoto(this)">
+                    <div class="photo-item" onclick="animatePhoto(this)" data-desc="Deskripsi Foto 6">
                         <img src="images/foto6.jpg" alt="Foto 6">
                     </div>
                 </div>
@@ -612,6 +641,15 @@
                 <button class="btn" onclick="showLoveGame()">Main Yuk! 💕</button>
             </div>
         </section>
+
+        <!-- Modal Popup -->
+        <div id="photoModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img id="modalImg" src="" alt="Foto Popup" style="max-width:100%; border-radius:10px;">
+                <p id="modalDesc" style="margin-top:10px; color:#333;"></p>
+            </div>
+        </div>
 
         <!-- Love Game Section -->
         <section class="section love-section" id="loveSection">
@@ -682,7 +720,7 @@
                 if (index < chars.length) {
                     container.innerHTML += chars[index] === '\n' ? '<br><br>' : chars[index];
                     index++;
-                    setTimeout(typeNext, 40);
+                    setTimeout(typeNext, 80);
                 }
             }
 
@@ -737,16 +775,42 @@
             }, 300);
         }
 
+
+        let clickCounts = new Map();
+
         function animatePhoto(photo) {
+            // animasi efek lama
             photo.style.transform = 'scale(1.2) rotate(5deg)';
             setTimeout(() => {
-                photo.style.transform = 'scale(1) rotate(0.3deg)';
+                photo.style.transform = 'scale(1) rotate(0deg)';
             }, 200);
             createSparkles(photo);
-            
+
             if (window.navigator.vibrate) {
                 window.navigator.vibrate(100);
             }
+
+            // fitur baru: hitung klik
+            let count = clickCounts.get(photo) || 0;
+            count++;
+            clickCounts.set(photo, count);
+
+            // kalau sudah 10 klik, buka modal
+            if (count === 10) {
+                let imgSrc = photo.querySelector("img").src;
+                let desc = photo.getAttribute("data-desc");
+
+                document.getElementById("modalImg").src = imgSrc;
+                document.getElementById("modalDesc").innerText = desc;
+                document.getElementById("photoModal").style.display = "block";
+
+                // reset counter biar bisa klik ulang
+                clickCounts.set(photo, 0);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById("photoModal").style.display = "none";
         }
 
         function showLoveGame() {
