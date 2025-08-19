@@ -551,30 +551,34 @@
         }
         /* MODAL */
         .modal {
-            display: none; 
+            display: flex; 
             position: fixed; 
             z-index: 999; 
-            padding-top: 80px; 
+            padding-top: 20px; 
             left: 0; top: 0;
             width: 100%; height: 100%; 
-            background-color: rgba(0,0,0,0.8);
+
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
         .modal-content {
             background: #fff;
             margin: auto;
-            padding: 20px;
+            padding: 10px;
             border-radius: 12px;
             max-width: 500px;
+            width: 100%;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
 
         .close {
-            position: absolute;
-            right: 25px;
-            top: 15px;
-            font-size: 28px;
+            position: relative;
+            justify-content: right;
+            top:-3px;
+            font-size: 25px;
             font-weight: bold;
             cursor: pointer;
         }
@@ -646,7 +650,7 @@
         <div id="photoModal" class="modal" style="display:none;">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <img id="modalImg" src="" alt="Foto Popup" style="max-width:100%; border-radius:10px;">
+                <img id="modalImg" src= "" alt="Foto Popup" style="max-width:100%; border-radius:10px;">
                 <p id="modalDesc" style="margin-top:10px; color:#333;"></p>
             </div>
         </div>
@@ -802,7 +806,7 @@
 
                 document.getElementById("modalImg").src = imgSrc;
                 document.getElementById("modalDesc").innerText = desc;
-                document.getElementById("photoModal").style.display = "block";
+                document.getElementById("photoModal").style.display = "flex";
 
                 // reset counter biar bisa klik ulang
                 clickCounts.set(photo, 0);
