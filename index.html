@@ -487,8 +487,8 @@
             }
             
             .subtitle {
-                font-size: 0.8rem;
-                margin-bottom: 2rem;
+                font-size: 1rem;
+                margin-bottom: 1rem;
             }
             
             .wishes {
@@ -583,6 +583,58 @@
             font-weight: bold;
             cursor: pointer;
         }
+        .pin-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        /* Modal Box */
+        .pin-modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            width: 350px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* PIN input style */
+        .pin-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .pin-box {
+            width: 45px;
+            height: 55px;
+            font-size: 24px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        /* Animasi getar */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        /* Fade in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
 <audio id="bgMusic" loop>
@@ -590,18 +642,33 @@
 </audio>
 <body>
     <div class="hearts" id="hearts"></div>
-    
-    <div class="container">
-        <!-- Welcome Section -->
+        <div class="container">
         <section class="section welcome-section" id="welcomeSection">
             <div class="welcome-content">
-                <h1 class="title">💕Special Surprise💕</h1>
-                <p class="subtitle">Ada yang istimewa untukmu hari ini...</p>
-                <div class="name-input">
-                    <button class="btn" onclick="startSurprise()">Mulai Kejutan! ✨</button>
-                </div>
+            <h1 class="title">💕Special Surprise💕</h1>
+            <p class="subtitle">I have something for you...</p>
+            <div class="name-input">
+                <button class="btn" onclick="openPinModal()">Mulai Kejutan! ✨</button>
+            </div>
             </div>
         </section>
+        </div>
+
+        <!-- Modal PIN -->
+        <div id="pinModal" class="pin-modal">
+        <div class="pin-modal-content">
+            <h2>Anniversary🔒</h2>
+            <div class="pin-container">
+            <input type="password" maxlength="1" class="pin-box" oninput="moveNext(this, 'pin2')" id="pin1">
+            <input type="password" maxlength="1" class="pin-box" oninput="moveNext(this, 'pin3')" id="pin2">
+            <input type="password" maxlength="1" class="pin-box" oninput="moveNext(this, 'pin4')" id="pin3">
+            <input type="password" maxlength="1" class="pin-box" oninput="moveNext(this, 'pin5')" id="pin4">
+            <input type="password" maxlength="1" class="pin-box" oninput="moveNext(this, 'pin6')" id="pin5">
+            <input type="password" maxlength="1" class="pin-box" oninput="checkAutoSubmit()" id="pin6">
+            </div>
+            <p id="errorMessage" style="color:red; display:none;">❌ Memang!kamu nda sayang sama aku</p>
+        </div>
+        </div>
         
         <!-- Birthday Message Section -->
         <section class="section message-section" id="messageSection">
@@ -609,7 +676,7 @@
                 <h2 class="birthday-title">🎉Selamat Ulang Tahun!🎉</h2>
                 <p class="message-text" id="personalMessage"></p>
                 
-                <button class="btn next-btn" onclick="showPhotos()">Lihat Kenangan! 📷</button>
+                <button class="btn next-btn" onclick="showPhotos()">Memories! 📷</button>
             </div>
         </section>
 
@@ -617,13 +684,13 @@
         <section class="section photo-section" id="photoSection">
             <div class="welcome-content">
                 <h2>📸</h2>
-                <p style="color: #ffffff; margin-bottom: 1rem;">coba klik fotonya 10x...</p>
+                <p style="color: #ffffff; margin-bottom: 1rem;">Klik Fotonya Sampai Penuh Bintang!</p>
                 
                 <div class="photo-grid">
                     <div class="photo-item" onclick="animatePhoto(this)" data-desc="Thanks for always being there for me❤️">
                         <img src="images/1.jpg" alt="Foto 1">
                     </div>
-                    <div class="photo-item" onclick="animatePhoto(this)" data-desc="congratulations,maaf untuk pertama kalinya aku merasa gagal menjadi pasangan bahkan disaat bahagiamu...I can't do anything.😊">
+                    <div class="photo-item" onclick="animatePhoto(this)" data-desc="congratulations,sorry even at your happiest moment..I can't do anything.😊">
                         <img src="images/foto7.jpg" alt="Foto 7">
                     </div>
                     <div class="photo-item" onclick="animatePhoto(this)" data-desc="you always know how to make me laugh😣">
@@ -708,6 +775,67 @@
     </div>
 
     <script>
+        const correctPin = "100824";
+
+        function openPinModal() {
+            document.getElementById("pinModal").style.display = "flex";
+            document.getElementById("pin1").focus();
+        }
+
+        function moveNext(current, nextId) {
+            if (current.value.length === 1 && nextId) {
+            document.getElementById(nextId).focus();
+            }
+            checkAutoSubmit();
+        }
+
+        function checkAutoSubmit() {
+            let pin = "";
+            for (let i = 1; i <= 6; i++) {
+            pin += document.getElementById("pin" + i).value;
+            }
+
+            if (pin.length === 6) {
+            checkPin(pin);
+            }
+        }
+
+        function checkPin(pin) {
+            const errorMsg = document.getElementById("errorMessage");
+
+            if (pin === correctPin) {
+            errorMsg.style.display = "none";
+            closePinModal();
+            startSurprise();
+            } else {
+            errorMsg.style.display = "block";
+            shakeModal();
+            resetPin();
+            }
+        }
+
+        function closePinModal() {
+            document.getElementById("pinModal").style.display = "none";
+            resetPin();
+        }
+
+        function resetPin() {
+            for (let i = 1; i <= 6; i++) {
+            document.getElementById("pin" + i).value = "";
+            }
+            document.getElementById("pin1").focus();
+        }
+
+        function startSurprise() {
+            alert("🎉 Selamat datang di kejutan spesial! 💖");
+            // bisa diarahkan ke halaman / animasi
+        }
+
+        function shakeModal() {
+            const modal = document.querySelector(".pin-modal-content");
+            modal.classList.add("shake");
+            setTimeout(() => modal.classList.remove("shake"), 500);
+        }
         // Game variables
         let gameBoard = ['', '', '', '', '', '', '', '', ''];
         let currentPlayer = '❤️'; // Player starts
